@@ -11,11 +11,13 @@ let category: [String] = ["КОФЕ", "ЗАВТРАКИ", "ЕДА", "ПРОГУ�
 
 struct CategoryScrollView: View {
     
+    private var arrayCategoryButton: [CategoryButton] { category.map { CategoryButton(buttonLabel: $0) } }
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(0..<category.count, id: \.self) {
-                    CategoryButton(buttonLabel: category[$0])
+                ForEach(0..<arrayCategoryButton.count, id: \.self) {
+                    arrayCategoryButton[$0]
                         .padding(2)
                 }
             }
