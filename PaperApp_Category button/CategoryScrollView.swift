@@ -7,10 +7,7 @@
 
 import SwiftUI
 
-let category: [String] = ["КОФЕ", "ЗАВТРАКИ", "ЕДА", "ПРОГУЛКИ", "БАРЫ", "ЖИВОТНЫЕ", "ДЕТИ", "ИССКУСТВО", "СПОРТ", "УСЛУГИ", "ПОКУПКИ", "ИСТОРИИ", "ВЫХОДНЫЕ", "ВЕЧЕР", "КОВОРКИНГ"]
-
 struct CategoryScrollView: View {
-    
     private var arrayCategoryButton: [CategoryButton] { category.map { CategoryButton(buttonLabel: $0) } }
     
     var body: some View {
@@ -22,6 +19,7 @@ struct CategoryScrollView: View {
                 }
             }
         }
+        .padding()
     }
 }
 

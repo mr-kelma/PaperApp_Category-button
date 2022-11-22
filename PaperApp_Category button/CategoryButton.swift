@@ -7,28 +7,25 @@
 
 import SwiftUI
 
+var category: [String] = ["КОФЕ", "ЗАВТРАКИ", "ЕДА", "ПРОГУЛКИ", "БАРЫ", "ЖИВОТНЫЕ", "ДЕТИ", "ИССКУСТВО", "СПОРТ", "УСЛУГИ", "ПОКУПКИ", "ИСТОРИИ", "ВЫХОДНЫЕ", "ВЕЧЕР", "КОВОРКИНГ"]
+
 struct CategoryButton: View {
-    
-    @State private var buttonPressed: Bool = true
-    private var buttonLabel: String
-    
-    init(buttonLabel: String) {
-        self.buttonLabel = buttonLabel
-    }
+    @State private var buttonPressed: Bool = false
+    var buttonLabel: String
     
     var body: some View {
         Button(action: {
             // some action
-            self.buttonPressed = buttonPressed ? false : true
+            self.buttonPressed.toggle()
         }) {
             Text(buttonLabel)
-                .font(.system(size: 15))
+                .font(.system(size: 14))
                 .fontWeight(.medium)
-                .foregroundColor(buttonPressed ? Color("ColorGreen") : .white)
-                .padding(5)
+                .foregroundColor(buttonPressed ? .white : Color ("ColorGreen"))
+                .padding(4)
         }
         .padding(.horizontal)
-        .background(buttonPressed ? .white : Color("ColorGreen"))
+        .background(buttonPressed ? Color("ColorGreen") : .white)
         .cornerRadius(15)
         .overlay(RoundedRectangle(cornerRadius: 15)
             .stroke(Color("ColorGreen"), lineWidth: 1.5))
