@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-var category: [String] = ["КОФЕ", "ЗАВТРАКИ", "ЕДА", "ПРОГУЛКИ", "БАРЫ", "ЖИВОТНЫЕ", "ДЕТИ", "ИССКУСТВО", "СПОРТ", "УСЛУГИ", "ПОКУПКИ", "ИСТОРИИ", "ВЫХОДНЫЕ", "ВЕЧЕР", "КОВОРКИНГ"]
+var category: [String] = ["КОФЕ", "ЗАВТРАКИ", "ЕДА", "ПРОГУЛКИ", "БАРЫ", "ЖИВОТНЫЕ", "ДЕТИ", "ИССКУСТВО", "СПОРТ", "УСЛУГИ", "ПОКУПКИ", "ИСТОРИИ", "ВЫХОДНЫЕ", "ВЕЧЕР", "КОВОРКИНГ", "111"]
 
 struct CategoryButton: View {
-    @State private var buttonPressed: Bool = false
+    @Binding var buttonPressed: Bool
     var buttonLabel: String
     
     var body: some View {
@@ -34,6 +34,6 @@ struct CategoryButton: View {
 
 struct CategoryButton_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryButton(buttonLabel: "КОФЕ")
+        CategoryButton(buttonPressed: .constant(false), buttonLabel: "КОФЕ")
     }
 }

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ThemeScreenOne: View {
     @State private var resetPressed: Bool = false
-    private var arrayCategoryButton: [CategoryButton] { category.map { CategoryButton(buttonLabel: $0) } }
+    @State private var categoryButtonPressed: Bool = false
+    
+    private var arrayCategoryButton: [CategoryButton] { category.map { CategoryButton(buttonPressed: $categoryButtonPressed, buttonLabel: $0) } }
     private var gridItemLayout = [GridItem] (repeating: GridItem(.fixed(35), alignment: .leading), count: Int(round(Double(category.count) / 3.0)))
     
     var body: some View {
