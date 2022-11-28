@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-var category: [String] = ["КОФЕ", "ЗАВТРАКИ", "ЕДА", "ПРОГУЛКИ", "БАРЫ", "ЖИВОТНЫЕ", "ДЕТИ", "ИССКУСТВО", "СПОРТ", "УСЛУГИ", "ПОКУПКИ", "ИСТОРИИ", "ВЫХОДНЫЕ", "ВЕЧЕР", "КОВОРКИНГ", "111"]
+var category: [String] = ["КОФЕ", "ЗАВТРАКИ", "ЕДА", "ПРОГУЛКИ", "БАРЫ", "ЖИВОТНЫЕ", "ДЕТИ", "ИССКУСТВО", "СПОРТ", "УСЛУГИ", "ПОКУПКИ", "ИСТОРИИ", "ВЫХОДНЫЕ", "ВЕЧЕР", "КОВОРКИНГ"]
+
+var arrayCategoryButton: [CategoryButton] { category.map { CategoryButton(buttonLabel: $0) } }
 
 struct CategoryButton: View {
-    @Binding var buttonPressed: Bool
+    @State private var buttonPressed: Bool = false
     var buttonLabel: String
     
     var body: some View {
         Button(action: {
-            // some action
             self.buttonPressed.toggle()
         }) {
             Text(buttonLabel)
@@ -34,6 +35,6 @@ struct CategoryButton: View {
 
 struct CategoryButton_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryButton(buttonPressed: .constant(false), buttonLabel: "КОФЕ")
+        CategoryButton(buttonLabel: "КОФЕ")
     }
 }

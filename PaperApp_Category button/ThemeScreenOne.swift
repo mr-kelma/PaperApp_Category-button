@@ -1,48 +1,40 @@
 //
-//  ThemeScreen.swift
+//  ThemeScreenOne.swift
 //  PaperApp_Category button
 //
-//  Created by Valery Keplin on 21.11.22.
+//  Created by Valery Keplin on 28.11.22.
 //
 
 import SwiftUI
 
 struct ThemeScreenOne: View {
-    @State private var resetPressed: Bool = false
-    @State private var categoryButtonPressed: Bool = false
-    
-    private var arrayCategoryButton: [CategoryButton] { category.map { CategoryButton(buttonPressed: $categoryButtonPressed, buttonLabel: $0) } }
-    private var gridItemLayout = [GridItem] (repeating: GridItem(.fixed(35), alignment: .leading), count: Int(round(Double(category.count) / 3.0)))
+    @State private var resetPressed: Bool = true
     
     var body: some View {
+        
         VStack {
-            ScrollView(.horizontal) {
-                LazyHGrid(rows: gridItemLayout) {
-                    ForEach((0..<arrayCategoryButton.count), id: \.self) {
-                        arrayCategoryButton[$0]
-                    }
-                }
-            }
-            .frame(height: 35 * CGFloat(Int(round(Double(category.count) / 3.0))))
-            .padding()
-            
+            FlowLayout(mode: .scrollable,
+                       items: arrayCategoryButton,
+                       itemSpacing: 6) {
+                CategoryButton(buttonLabel: $0.buttonLabel)
+            } .padding(5)
             Button(action: {
-                self.resetPressed.toggle()
+                //some action
             }) {
                 Text("Сбросить все")
                     .font(.system(size: 17))
                     .fontWeight(.medium)
                     .foregroundColor(Color("ColorDarkGray"))
                     .padding()
-                    .opacity(resetPressed ? 0 : 1)
+                    .opacity(resetPressed ? 1 : 0)
             }
-            .disabled(resetPressed)
+            .disabled(resetPressed != true)
             Spacer()
         }
     }
 }
 
-struct ThemeScreen_Previews: PreviewProvider {
+struct ThemeScreenOne_Previews: PreviewProvider {
     static var previews: some View {
         ThemeScreenOne()
     }

@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct CategoryScrollView: View {
-    @State private var categoryButtonPressed: Bool = false
-    
-    private var arrayCategoryButton: [CategoryButton] { category.map { CategoryButton(buttonPressed: $categoryButtonPressed, buttonLabel: $0) } }
-    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
@@ -20,8 +16,7 @@ struct CategoryScrollView: View {
                         .padding(2)
                 }
             }
-        }
-        .padding()
+        }.padding()
     }
 }
 

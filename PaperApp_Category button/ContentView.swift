@@ -18,17 +18,6 @@ struct ContentView: View {
         .padding()
     }
 }
-  
-struct ChildView: View {
-  @Binding var msg: String
-    
-  var body: some View {
-    Text(msg)
-  }
-}
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

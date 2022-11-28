@@ -8,22 +8,10 @@
 import SwiftUI
 
 struct ThemeScreenTwo: View {
-    @State private var resetPressed: Bool = false
-    @State private var categoryButtonPressed: Bool = false
-    
+    @State private var resetPressed: Bool = true
     private let amountHStack = Int((Double(category.count) / 3.0).rounded(.awayFromZero))
-    private var arrayCategoryButton: [CategoryButton] { category.map { CategoryButton(buttonPressed: $categoryButtonPressed, buttonLabel: $0) } }
-    private var searchButtonsPressed: Bool {
-        var search = false
-        for button in arrayCategoryButton {
-            guard button.buttonPressed else { return search }
-            search = true
-        }
-        return search
-    }
     
     var body: some View {
-        
         VStack {
             ForEach(0..<amountHStack, id: \.self) { index in
                 HStack(spacing: 10) {
@@ -40,16 +28,16 @@ struct ThemeScreenTwo: View {
             }
         
             Button(action: {
-                self.categoryButtonPressed.toggle()
+                //some action
             }) {
                 Text("Сбросить все")
                     .font(.system(size: 17))
                     .fontWeight(.medium)
                     .foregroundColor(Color("ColorDarkGray"))
                     .padding()
-                    .opacity(searchButtonsPressed ? 1 : 0)
+                    .opacity(resetPressed ? 1 : 0)
             }
-            .disabled(searchButtonsPressed != true)
+            .disabled(resetPressed != true)
             Spacer()
         }
         .padding(5)
