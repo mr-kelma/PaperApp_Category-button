@@ -9,14 +9,14 @@ import SwiftUI
 
 struct CategoryScrollView: View {
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(0..<arrayCategoryButton.count, id: \.self) {
-                    arrayCategoryButton[$0]
-                        .padding(2)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(0..<category.count, id: \.self) {
+                        CategoryButton(buttonLabel: category[$0])
+                            .padding(2)
+                    }
                 }
-            }
-        }.padding()
+            }.padding()
     }
 }
 

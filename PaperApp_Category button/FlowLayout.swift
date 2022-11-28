@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-public let flowLayoutDefaultItemSpacing: CGFloat = 4
-
 public struct FlowLayout<RefreshBinding, Data, ItemView: View>: View {
   let mode: Mode
   @Binding var binding: RefreshBinding
@@ -21,7 +19,7 @@ public struct FlowLayout<RefreshBinding, Data, ItemView: View>: View {
   public init(mode: Mode,
               binding: Binding<RefreshBinding>,
               items: [Data],
-              itemSpacing: CGFloat = flowLayoutDefaultItemSpacing,
+              itemSpacing: CGFloat = 5,
               @ViewBuilder viewMapping: @escaping (Data) -> ItemView) {
     self.mode = mode
     _binding = binding
@@ -107,7 +105,7 @@ private struct HeightReaderView: View {
 public extension FlowLayout where RefreshBinding == Never? {
     init(mode: Mode,
          items: [Data],
-         itemSpacing: CGFloat = flowLayoutDefaultItemSpacing,
+         itemSpacing: CGFloat = 5,
          @ViewBuilder viewMapping: @escaping (Data) -> ItemView) {
         self.init(mode: mode,
                   binding: .constant(nil),

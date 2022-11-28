@@ -11,7 +11,7 @@ import SwiftUI
 struct PaperApp_Category_buttonApp: App {
     var body: some Scene {
         WindowGroup {
-            ThemeScreenTwo()
+            ThemeScreenOne()
         }
     }
 }

@@ -8,27 +8,32 @@
 import SwiftUI
 
 struct ThemeScreenOne: View {
-    @State private var resetPressed: Bool = true
+    @State private var resetPressed: Bool = false
+
+    private var checkingPressedButtons: Bool { conditionCategoryButton.values.contains(true) }
     
     var body: some View {
         
         VStack {
             FlowLayout(mode: .scrollable,
-                       items: arrayCategoryButton,
+                       items: category,
                        itemSpacing: 6) {
-                CategoryButton(buttonLabel: $0.buttonLabel)
+                CategoryButton(buttonLabel: $0)
             } .padding(5)
             Button(action: {
-                //some action
+                
+                
+                conditionCategoryButton.keys.forEach { conditionCategoryButton[$0] = false }
+                resetPressed = checkingPressedButtons
             }) {
                 Text("Сбросить все")
                     .font(.system(size: 17))
                     .fontWeight(.medium)
                     .foregroundColor(Color("ColorDarkGray"))
                     .padding()
-                    .opacity(resetPressed ? 1 : 0)
+//                    .opacity(checkingPressedButtons == resetPressed ? 0 : 1)
             }
-            .disabled(resetPressed != true)
+//            .disabled(checkingPressedButtons == resetPressed)
             Spacer()
         }
     }

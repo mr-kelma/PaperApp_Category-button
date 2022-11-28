@@ -9,7 +9,7 @@ import SwiftUI
 
 var category: [String] = ["КОФЕ", "ЗАВТРАКИ", "ЕДА", "ПРОГУЛКИ", "БАРЫ", "ЖИВОТНЫЕ", "ДЕТИ", "ИССКУСТВО", "СПОРТ", "УСЛУГИ", "ПОКУПКИ", "ИСТОРИИ", "ВЫХОДНЫЕ", "ВЕЧЕР", "КОВОРКИНГ"]
 
-var arrayCategoryButton: [CategoryButton] { category.map { CategoryButton(buttonLabel: $0) } }
+var conditionCategoryButton: [String:Bool] = Dictionary(uniqueKeysWithValues: category.map { ($0, false) })
 
 struct CategoryButton: View {
     @State private var buttonPressed: Bool = false
@@ -18,6 +18,7 @@ struct CategoryButton: View {
     var body: some View {
         Button(action: {
             self.buttonPressed.toggle()
+            conditionCategoryButton[buttonLabel] = buttonPressed
         }) {
             Text(buttonLabel)
                 .font(.system(size: 14))
