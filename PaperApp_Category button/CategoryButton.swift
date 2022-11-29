@@ -10,10 +10,10 @@ import SwiftUI
 var category: [String] = ["КОФЕ", "ЗАВТРАКИ", "ЕДА", "ПРОГУЛКИ", "БАРЫ", "ЖИВОТНЫЕ", "ДЕТИ", "ИССКУСТВО", "СПОРТ", "УСЛУГИ", "ПОКУПКИ", "ИСТОРИИ", "ВЫХОДНЫЕ", "ВЕЧЕР", "КОВОРКИНГ"]
 
 var conditionCategoryButton: [String:Bool] = Dictionary(uniqueKeysWithValues: category.map { ($0, false) })
-    
+
 struct CategoryButton: View {
     @Binding var buttonPressed: [String:Bool]
-    var buttonLabel: String
+    let buttonLabel: String
     
     var body: some View {
         Button(action: {

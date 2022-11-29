@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ThemeScreenOne: View {
-    @State private var buttonPressed: [String:Bool] = Dictionary(uniqueKeysWithValues: category.map { ($0, false) })
+    @State private var buttonPressed: [String:Bool] = conditionCategoryButton
     
     var body: some View {
         
@@ -19,13 +19,8 @@ struct ThemeScreenOne: View {
                 CategoryButton(buttonPressed: $buttonPressed, buttonLabel: $0)
             } .padding(5)
             Button(action: {
-            
-                print(conditionCategoryButton.values)
-                
                 buttonPressed.keys.forEach { buttonPressed[$0] = false }
                 conditionCategoryButton.keys.forEach { conditionCategoryButton[$0] = false }
-                
-                print(conditionCategoryButton.values)
             }) {
                 Text("Сбросить все")
                     .font(.system(size: 17))

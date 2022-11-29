@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CategoryScrollView: View {
-    @State private var buttonPressed: [String:Bool] = Dictionary(uniqueKeysWithValues: category.map { ($0, false) })
+    @State private var buttonPressed: [String:Bool] = conditionCategoryButton
     
     var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
