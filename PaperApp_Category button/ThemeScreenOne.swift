@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct ThemeScreenOne: View {
-    @State private var resetPressed: Bool = false
-
-    private var checkingPressedButtons: Bool { conditionCategoryButton.values.contains(true) }
+    @State private var buttonPressed: [String:Bool] = Dictionary(uniqueKeysWithValues: category.map { ($0, false) })
     
     var body: some View {
         
@@ -18,22 +16,25 @@ struct ThemeScreenOne: View {
             FlowLayout(mode: .scrollable,
                        items: category,
                        itemSpacing: 6) {
-                CategoryButton(buttonLabel: $0)
+                CategoryButton(buttonPressed: $buttonPressed, buttonLabel: $0)
             } .padding(5)
             Button(action: {
+            
+                print(conditionCategoryButton.values)
                 
-                
+                buttonPressed.keys.forEach { buttonPressed[$0] = false }
                 conditionCategoryButton.keys.forEach { conditionCategoryButton[$0] = false }
-                resetPressed = checkingPressedButtons
+                
+                print(conditionCategoryButton.values)
             }) {
                 Text("Сбросить все")
                     .font(.system(size: 17))
                     .fontWeight(.medium)
                     .foregroundColor(Color("ColorDarkGray"))
                     .padding()
-//                    .opacity(checkingPressedButtons == resetPressed ? 0 : 1)
+                    .opacity(buttonPressed.values.contains(true) ? 1 : 0)
             }
-//            .disabled(checkingPressedButtons == resetPressed)
+            .disabled(!buttonPressed.values.contains(true))
             Spacer()
         }
     }

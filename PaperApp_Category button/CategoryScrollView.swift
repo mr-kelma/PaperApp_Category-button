@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct CategoryScrollView: View {
+    @State private var buttonPressed: [String:Bool] = Dictionary(uniqueKeysWithValues: category.map { ($0, false) })
+    
     var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(0..<category.count, id: \.self) {
-                        CategoryButton(buttonLabel: category[$0])
+                        CategoryButton(buttonPressed: $buttonPressed, buttonLabel: category[$0])
                             .padding(2)
                     }
                 }
